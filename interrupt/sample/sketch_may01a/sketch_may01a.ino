@@ -3,7 +3,7 @@ Advanced Blink with an Interrupt Sketch
 By: David M. Orlo
 www.DaviedOrlo.com
 */
-
+String readString;
 byte SWITCHPIN=2;
 int LEDPin=6;
 byte brightness; 
@@ -24,6 +24,8 @@ void setup(){
 }
 
 void loop(){
+	// send data only when you receive data:
+	ReadInput();
 	//digitalWrite(10,HIGH);
 	photocellReading = analogRead(photocellPin);  
 
@@ -40,7 +42,7 @@ void loop(){
 	Serial.println(photocellReading);     // the raw analog reading
 
 	onOff(photocellReading);
-	//delay(100);
+	delay(1000);
 	
 	//delay(200); //Wait a moment to help debounce the switch
 	if (trigger==1){
@@ -80,4 +82,26 @@ void onOff(int value){
 
   }
 }
-
+void ReadInput(){
+	while (Serial.available()) {
+		delay(3);  
+		char c = Serial.read();
+		readString += c; 
+	}
+	checkCommand(readString);
+}
+void checkCommand(String input){
+	readString.trim();
+	if (readString.length() >0) {
+		if(readString == "ON"){
+			digitalWrite(LEDPin2,HIGH);
+			Serial.println(readString);
+		}
+		if(readString == "OFF"){
+			digitalWrite(LEDPin2,LOW);
+			Serial.println(readString);
+		}
+		Serial.println(readString);
+	}
+	readString = "";
+}
