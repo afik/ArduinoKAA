@@ -94,11 +94,11 @@ void checkCommand(String input){
 	readString.trim();
 	if (readString.length() >0) {
 		if(readString == "ON"){
-			digitalWrite(LEDPin2,HIGH);
+			analogWrite(2,HIGH);
 			Serial.println(readString);
 		}
 		if(readString == "OFF"){
-			digitalWrite(LEDPin2,LOW);
+			analogWrite(2,LOW);
 			Serial.println(readString);
 		}
 		Serial.println(readString);
