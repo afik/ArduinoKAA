@@ -22,19 +22,17 @@ byte i = B00000110;
 byte g = B11110110;
 byte h = B10101100;
 
-const byte ROWS = 4; // Four rows
+const byte ROWS = 2; // rows
 const byte COLS = 3; // Three columns
 // Define the Keymap
 char keys[ROWS][COLS] = {
   {'1','2','3'},
   {'4','5','6'},
-  {'7','8','9'},
-  {'#','0','*'}
 };
 // Connect keypad ROW0, ROW1, ROW2 and ROW3 to these Arduino pins.
-byte rowPins[ROWS] = { 9, 8, 7, 6 };
+byte rowPins[ROWS] = {12, 11};
 // Connect keypad COL0, COL1 and COL2 to these Arduino pins.
-byte colPins[COLS] = { 12, 11, 10 }; 
+byte colPins[COLS] = {8, 7, 6}; 
 
 // Create the Keypad
 Keypad kpd = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
@@ -45,7 +43,7 @@ void setup()
 {
   pinMode(clock, OUTPUT); // make the clock pin an output
   pinMode(data , OUTPUT); // make the data pin an output
-  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
   digitalWrite(ledpin, HIGH);
   Serial.begin(9600);
 }
@@ -59,36 +57,9 @@ void loop()
     switch (key)
     {
       case '1':
-        digitalWrite(4, HIGH);
+        analogWrite(5, 255);
         break;
       case '2':
-        shiftOut(data, clock, LSBFIRST, two);
-        break;
-      case '3':
-        shiftOut(data, clock, LSBFIRST, three);
-        break;
-      case '4':
-        shiftOut(data, clock, LSBFIRST, four);
-        break;
-      case '5':
-        shiftOut(data, clock, LSBFIRST, five);
-        break;
-      case '6':
-        shiftOut(data, clock, LSBFIRST, six);
-        break;
-      case '7':
-        shiftOut(data, clock, LSBFIRST, seven);
-        break;
-      case '8':
-        shiftOut(data, clock, LSBFIRST, eight);
-        break;
-      case '9':
-        shiftOut(data, clock, LSBFIRST, nine);
-        break;
-      case '0':
-        shiftOut(data, clock, LSBFIRST, zero);
-        break;
-      case '*':
          shiftOut(data,clock,LSBFIRST,s);
          delay(500);
          shiftOut(data,clock,LSBFIRST,l);
@@ -111,8 +82,19 @@ void loop()
          delay(500);
          shiftOut(data,clock,LSBFIRST,t);
          break;
+      case '3':
+        shiftOut(data, clock, LSBFIRST, three);
+        break;
+      case '4':
+        shiftOut(data, clock, LSBFIRST, four);
+        break;
+      case '5':
+        shiftOut(data, clock, LSBFIRST, five);
+        break;
+      case '6':
+        shiftOut(data, clock, LSBFIRST, six);
+        break;
       default:
-        shiftOut(data, clock, LSBFIRST, hapus);
         break;
     }
   }
