@@ -37,7 +37,6 @@ void loop(){
 	//now we have to map 0-1023 to 0-255 since thats the range analogWrite uses
 	LEDbrightness = map(photocellReading, 0, 1023, 0, 255);
 	analogWrite(LEDPin, LEDbrightness);
-
 	Serial.print("LED = ");
 	Serial.println(photocellReading);     // the raw analog reading
 
