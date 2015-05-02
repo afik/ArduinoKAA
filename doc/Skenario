@@ -1,0 +1,13 @@
+Alarm Untuk Tidur
+------------------
+
+Jadi alarmnya akan menyala jika kondisi ruangan gelap.
+
+Fungsi dari alarm:
+	0. Sensor cahaya untuk menjalankan semua fungsi
+	1. Menyalakan lagu yang menemani untuk tidur
+	2. Kipas akan menyala
+	3. Matrix keypad akan digunakan untuk menentukan jenis dari lagu yg dipilih
+	4. Button untuk menyalakan LED
+	5. 7-Segment LED akan menampilkan mode yang dipilih
+	6. Sensor suara 
