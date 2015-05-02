@@ -1,9 +1,3 @@
-/*
-Advanced Blink with an Interrupt Sketch
-By: David M. Orlo
-www.DaviedOrlo.com
-*/
-
 void setup(){
 	pinMode(3, OUTPUT);
 	pinMode(4, OUTPUT);
@@ -21,5 +15,3 @@ void setup(){
 void loop(){
 
 }
-
-
